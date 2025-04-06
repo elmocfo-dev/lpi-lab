@@ -1,3 +1,5 @@
+![LPIC-1](https://img.shields.io/badge/LPIC-1-informational?style=flat&logo=linux&logoColor=white&color=FCC624)
+![Debian](https://img.shields.io/badge/Debian-12-informational?style=flat&logo=debian&logoColor=white&color=A81D33)
 # lpi-lab
 Laboratório de estudos para certificações LPI (LPIC-1 e LPIC-2)
 # 🐧 LPI-Lab: Laboratório de Certificação Linux

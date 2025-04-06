@@ -1,0 +1,33 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  # Configuração global
+  config.vm.box_check_update = false
+
+  # Máquina LPIC-1 (Ubuntu)
+  config.vm.define "lpic1" do |node|
+    node.vm.box = "generic/ubuntu2204"
+    node.vm.hostname = "lpic1-lab"
+    
+    # Rede para testes
+    node.vm.network "private_network", ip: "192.168.56.10"
+    
+    # Provisionamento
+    node.vm.provision "shell", path: "scripts/lpic1-setup.sh"
+    node.vm.provision "shell", path: "scenarios/break-boot.sh", run: "never"
+  end
+
+  # Máquina LPIC-2 (CentOS)
+  config.vm.define "lpic2" do |node|
+    node.vm.box = "generic/centos8"
+    node.vm.hostname = "lpic2-lab"
+    
+    # Discos extras para LVM/RAID
+    node.vm.disk :disk, size: "1GB", name: "sdb"
+    node.vm.disk :disk, size: "1GB", name: "sdc"
+    
+    # Provisionamento
+    node.vm.provision "shell", path: "scripts/lpic2-setup.sh"
+  end
+end
